@@ -417,6 +417,7 @@ class TestReporter {
         core.info(`Check run HTML: ${resp.data.html_url}`);
         if (this.showHTMLNotice) {
             core.info('*** showhtmlnotice set to true');
+            core.info(`*** test results ${this.actionRunNumber} ***`);
             core.exportVariable('TEST_RESULTS_URL', `${resp.data.html_url}`);
             core.info(`Set env var to: ${process.env.TEST_RESULTS_URL}`);
             core.info(`::notice title=Test Results ${this.actionRunNumber}::${resp.data.html_url}`);
