@@ -275,6 +275,7 @@ class TestReporter {
     workDirInput = core.getInput('working-directory', { required: false });
     onlySummary = core.getInput('only-summary', { required: false }) === 'true';
     showHTMLNotice = core.getInput('show-html-notice', { required: false }) === 'true';
+    actionRunNumber = core.getInput('action-run-number', { required: false });
     token = core.getInput('token', { required: true });
     octokit;
     context = (0, github_utils_1.getCheckRunContext)();
@@ -418,7 +419,7 @@ class TestReporter {
             core.info('*** showhtmlnotice set to true');
             core.exportVariable('TEST_RESULTS_URL', `${resp.data.html_url}`);
             core.info(`Set env var to: ${process.env.TEST_RESULTS_URL}`);
-            core.info(`::notice title=Test Results::${resp.data.html_url}`);
+            core.info(`::notice title=Test Results ${this.actionRunNumber}::${resp.data.html_url}`);
         }
         core.setOutput('url', resp.data.url);
         core.setOutput('url_html', resp.data.html_url);
